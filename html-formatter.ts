@@ -10,14 +10,12 @@ export class HtmlFormatter {
   static LineType = LineType;
 
   // Matches opening or closing tags and captures their contents.
-  static OPENING_OR_CLOSING_TAG_REGEX: RegExp = new RegExp("(<[\\S\\s]*?>)");
+  static OPENING_OR_CLOSING_TAG_REGEX: RegExp = /(<[\S\s]*?>)/;
   // Matches opening tags and captures the tag name.
-  static OPENING_TAG_REGEX: RegExp = new RegExp(
-    "<[\\s\\n]*([a-zA-Z]+)[\\S\\s]*>");
-  static CLOSING_TAG_REGEX: RegExp = new RegExp(
-    "<[\\s\\n]*/[\\s\\n]*([a-zA-Z]+)[\\S\\s]*?>");
-  static COMMENT_TAG_REGEX: RegExp = new RegExp("<!--[\\S\\s]*?-->")
-  static WHITESPACE_REGEX: RegExp = new RegExp("[\\s\\n]+");
+  static OPENING_TAG_REGEX: RegExp = /<[\s\n]*([a-zA-Z]+)[\S\s]*>/;
+  static CLOSING_TAG_REGEX: RegExp = /<[\s\n]*/[\s\n]*([a-zA-Z]+)[\S\s]*?>/;
+  static COMMENT_TAG_REGEX: RegExp = /<!--[\S\s]*?-->/;
+  static WHITESPACE_REGEX: RegExp = /[\s\n]+/;
   static ATTRIBUTE_REGEX: RegExp = /[a-zA-Z\-\(\)\*\[\]]+(="(?:[\S\s]{0,1}(?:\\"){0,1})*?"){0,1}/g;
   static VOID_ELEMENT_NAMES: Set<string> = new Set([
     "area", "base", "br", "col", "embed", "hr", "img", "input", "keygen",
